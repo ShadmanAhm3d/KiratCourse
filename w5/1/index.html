@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title></title>
+    <link href="css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="buttonParent"></div>
+
+
+    <script>
+
+    let state = { count : 0, }
+
+    function onButtonPress(){
+     state.count++;
+     buttonCompRerender();
+    }
+
+
+    function buttonCompRerender(){
+      document.getElementById("buttonParent").innerHTML = "";
+      const comp = buttonComp(state.count);
+      document.getElementById("buttonParent").appendChild(comp);
+    }
+
+    function buttonComp(count){
+      const button = document.createElement("button");
+      button.innerHTML = `Counter ${count}`;
+      button.setAttribute("onclick",`onButtonPress()`);
+      return button;
+    }
+
+     buttonCompRerender();
+    </script>
+  </body>
+</html>
