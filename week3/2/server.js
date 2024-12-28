@@ -43,20 +43,16 @@ app.post("/signup", async function (req, res) {
   }
 });
 
-
-
-const userExists = async (username)=>{
-  //TODO :search that person in the db ? 
-   try {
-    const res  = await Users.find({username : username}).exec()
-    if(res) return true;
-  }catch(err){
-    console.log("User does not exist")
+const userExists = async (username) => {
+  //TODO :search that person in the db ?
+  try {
+    const res = await Users.find({ username: username }).exec();
+    if (res) return true;
+  } catch (err) {
+    console.log("User does not exist");
     return false;
   }
-
-}
-
+};
 
 app.post("/signin", function (req, res) {
   const username = req.body.username;

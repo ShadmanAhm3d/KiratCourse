@@ -1,6 +1,5 @@
 const z = require("zod");
-const express = require("express")
-
+const express = require("express");
 
 function test(obj) {
   const schema = z.object({
@@ -8,23 +7,22 @@ function test(obj) {
     pass: z.string().min(5),
   });
   const res = schema.safeParse(obj);
-  
+
   console.log(res);
   return res;
 }
 
-
- const postHandler =  (req, res) => {
-   const response =   test(req.body);
-  if(!response.success){
-    res.json("Not working")
-  }else{
+const postHandler = (req, res) => {
+  const response = test(req.body);
+  if (!response.success) {
+    res.json("Not working");
+  } else {
     res.json({
-      msg: "greatSuccess"
-    })
+      msg: "greatSuccess",
+    });
   }
-}
+};
 
- module.exports = {
+module.exports = {
   postHandler,
-}
+};
